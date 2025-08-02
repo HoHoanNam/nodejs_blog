@@ -1,6 +1,9 @@
 const express = require('express'); // Import ExpressJS
+const morgan = require('morgan'); // Import Morgan
 const app = express(); // Tạo instance ứng dụng
 const port = 3127; // Cổng server
+
+app.use(morgan('combined'));
 
 // Route GET cho đường dẫn gốc
 app.get('/', (req, res) => {
