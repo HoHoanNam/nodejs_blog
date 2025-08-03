@@ -8,6 +8,9 @@ const port = 3127; // Cổng server
 // Cấu hình sử dụng file tĩnh
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '10mb' }));
+
 // HTTP logger
 // app.use(morgan('combined'));
 
@@ -31,7 +34,8 @@ app.get('/search', (req, res) => {
 });
 
 app.post('/search', (req, res) => {
-  res.render('search');
+  console.log(req.body);
+  res.send('');
 });
 
 // Khởi động server
