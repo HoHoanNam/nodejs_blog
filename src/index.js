@@ -1,7 +1,9 @@
 const path = require('path'); // Import Path
 const morgan = require('morgan'); // Import Morgan
 const express = require('express'); // Import ExpressJS
-const { engine: handlebars } = require('express-handlebars'); // Import Handlebars
+const { engine: handlebars } = require('express-handlebars'); // Import
+const route = require('./routes');
+
 const app = express(); // Tạo instance ứng dụng
 const port = 3127; // Cổng server
 
@@ -20,23 +22,7 @@ app.set('view engine', 'hbs'); // Sử dụng template engine
 app.set('views', path.join(__dirname, 'resources/views')); // Cấu hình đường dẫn cho thư mục views
 
 // Định nghĩa route
-app.get('/', (req, res) => {
-  res.render('home');
-});
-
-app.get('/news', (req, res) => {
-  console.log(req.query.q);
-  res.render('news');
-});
-
-app.get('/search', (req, res) => {
-  res.render('search');
-});
-
-app.post('/search', (req, res) => {
-  console.log(req.body);
-  res.send('');
-});
+route(app);
 
 // Khởi động server
 app.listen(port, () => {
