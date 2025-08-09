@@ -3,6 +3,10 @@ const morgan = require('morgan'); // Import Morgan
 const express = require('express'); // Import ExpressJS
 const { engine: handlebars } = require('express-handlebars'); // Import
 const route = require('./routes');
+const db = require('./config/db');
+
+// Connect to db
+db.connect();
 
 const app = express(); // Tạo instance ứng dụng
 const port = 3127; // Cổng server
